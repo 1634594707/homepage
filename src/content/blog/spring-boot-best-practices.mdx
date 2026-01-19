@@ -1,0 +1,183 @@
+---
+title: 'Spring Boot 开发最佳实践'
+description: '分享我在 Spring Boot 项目开发中总结的一些最佳实践和经验'
+date: '2026-01-18'
+---
+
+# Spring Boot 开发最佳实践
+
+在过去一年的 Spring Boot 项目开发中，我总结了一些实用的最佳实践，希望能帮助到正在学习后端开发的同学。
+
+## 项目结构规范
+
+一个清晰的项目结构能大大提升代码的可维护性。我通常采用以下结构：
+
+```
+src/main/java/com/example/project/
+├── controller/      # 控制器层
+├── service/         # 业务逻辑层
+├── repository/      # 数据访问层
+├── entity/          # 实体类
+├── dto/             # 数据传输对象
+├── config/          # 配置类
+├── exception/       # 自定义异常
+└── util/            # 工具类
+```
+
+## 统一异常处理
+
+使用 `@ControllerAdvice` 和 `@ExceptionHandler` 实现全局异常处理：
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleException(Exception e) {
+        ErrorResponse error = new ErrorResponse(
+            HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            e.getMessage()
+        );
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+## 统一返回格式
+
+定义统一的 API 返回格式，提升接口的一致性：
+
+```java
+public class Result<T> {
+    private Integer code;
+    private String message;
+    private T data;
+    
+    public static <T> Result<T> success(T data) {
+        return new Result<>(200, "success", data);
+    }
+    
+    public static <T> Result<T> error(String message) {
+        return new Result<>(500, message, null);
+    }
+}
+```
+
+## 参数校验
+
+使用 `@Valid` 和 `@Validated` 进行参数校验：
+
+```java
+@PostMapping("/users")
+public Result<User> createUser(@Valid @RequestBody UserDTO userDTO) {
+    User user = userService.createUser(userDTO);
+    return Result.success(user);
+}
+```
+
+在 DTO 中使用注解：
+
+```java
+public class UserDTO {
+    @NotBlank(message = "用户名不能为空")
+    private String username;
+    
+    @Email(message = "邮箱格式不正确")
+    private String email;
+    
+    @Size(min = 6, max = 20, message = "密码长度必须在6-20之间")
+    private String password;
+}
+```
+
+## 日志规范
+
+合理使用日志级别，记录关键信息：
+
+```java
+@Slf4j
+@Service
+public class UserService {
+    
+    public User createUser(UserDTO userDTO) {
+        log.info("开始创建用户: {}", userDTO.getUsername());
+        try {
+            // 业务逻辑
+            User user = userRepository.save(user);
+            log.info("用户创建成功: {}", user.getId());
+            return user;
+        } catch (Exception e) {
+            log.error("用户创建失败: {}", e.getMessage(), e);
+            throw new BusinessException("用户创建失败");
+        }
+    }
+}
+```
+
+## 配置管理
+
+使用 `application.yml` 管理配置，并通过 `@ConfigurationProperties` 读取：
+
+```java
+@Data
+@Component
+@ConfigurationProperties(prefix = "app")
+public class AppProperties {
+    private String name;
+    private String version;
+    private JwtProperties jwt;
+    
+    @Data
+    public static class JwtProperties {
+        private String secret;
+        private Long expiration;
+    }
+}
+```
+
+## 数据库优化
+
+1. **使用索引**：为常用查询字段添加索引
+2. **避免 N+1 查询**：使用 `@EntityGraph` 或 JOIN FETCH
+3. **分页查询**：使用 `Pageable` 处理大量数据
+4. **连接池配置**：合理配置 HikariCP 参数
+
+```java
+@Query("SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.id = :id")
+Optional<User> findByIdWithRoles(@Param("id") Long id);
+```
+
+## 缓存策略
+
+合理使用 Redis 缓存提升性能：
+
+```java
+@Cacheable(value = "users", key = "#id")
+public User getUserById(Long id) {
+    return userRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("用户不存在"));
+}
+
+@CacheEvict(value = "users", key = "#id")
+public void deleteUser(Long id) {
+    userRepository.deleteById(id);
+}
+```
+
+## 异步处理
+
+使用 `@Async` 处理耗时操作：
+
+```java
+@Async
+public CompletableFuture<String> sendEmail(String to, String content) {
+    // 发送邮件逻辑
+    return CompletableFuture.completedFuture("邮件发送成功");
+}
+```
+
+## 总结
+
+以上是我在 Spring Boot 开发中总结的一些最佳实践。这些实践帮助我写出更清晰、更易维护的代码。当然，最佳实践会随着项目需求和技术发展而变化，重要的是保持学习和思考。
+
+希望这些经验对你有所帮助！如果有任何问题或建议，欢迎交流讨论。
