@@ -1,229 +1,249 @@
-# SCLS AI Camp - Mini Project 1: Personal Portfolio
+# 江皓铖的个人主页
 
-[English](README.md) | [简体中文](README.md#readme-中文)
+> 一个现代化、极简优雅的个人主页，采用 Next.js 14 + TypeScript + Tailwind CSS 构建
 
-This is Mini Project 1 for SCLS AI Camp students, based on the excellent portfolio template originally created by [Corey Chiu](https://coreychiu.com). This template has been adapted for educational purposes to help students learn web development, Git workflows, and deployment practices.
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-38B2AC)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Original Credit
-This template was created by Corey Chiu. Check out his work at [coreychiu.com](https://coreychiu.com)
+## ✨ 特性
 
-## Quick Start
+- 🎨 **极简设计** - 受 homepage-main 启发的优雅单列布局
+- 🤖 **3D 交互** - 集成 Spline 3D 机器人展示
+- 🌓 **主题切换** - 支持亮色/暗色模式自动切换
+- 📱 **响应式** - 完美适配桌面端和移动端
+- 📝 **博客系统** - 基于 MDX 的博客文章管理
+- 🎯 **项目展示** - 展示个人项目和技术栈
+- ⚡ **性能优化** - 使用 Next.js 14 App Router 和服务端渲染
+- 🎭 **动画效果** - Framer Motion 驱动的流畅动画
 
-### Prerequisites
-- Basic understanding of Git
-- Node.js installed on your computer
-- GitHub account
+## 🚀 快速开始
 
-### Development
-1. Fork this repository to your GitHub account:
-   - Click the "Fork" button at the top right of this page
-   - Select your GitHub account as the destination
+### 环境要求
 
-2. Clone your forked repository:
+- Node.js 18.0 或更高版本
+- npm 或 pnpm
+
+### 安装
+
 ```bash
-git clone git@github.com:YOUR_USERNAME/MP1.git
-cd MP1
-```
+# 克隆仓库
+git clone git@github.com:1634594707/homepage.git
+cd homepage
 
-3. Install dependencies:
-```bash
+# 安装依赖
+npm install
+# 或使用 pnpm
 pnpm install
 ```
 
-4. Create and configure your `.env.local`:
+### 开发
+
 ```bash
-cp .env.example .env.local
+# 启动开发服务器
+npm run dev
+
+# 访问 http://localhost:3000
 ```
 
-5. Start the development server:
+### 构建
+
 ```bash
-pnpm dev
+# 生产构建
+npm run build
+
+# 启动生产服务器
+npm start
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser to see your portfolio
+## � 项目结构
 
-### Deployment
-The easiest way to deploy your portfolio is using [Vercel](https://vercel.com):
+```
+MP1-main/
+├── src/
+│   ├── app/                    # Next.js 14 App Router
+│   │   ├── page.tsx           # 主页
+│   │   ├── about/             # 关于页面
+│   │   ├── blogs/             # 博客页面
+│   │   └── projects/          # 项目页面
+│   ├── components/            # React 组件
+│   │   ├── home/              # 主页组件
+│   │   ├── layout/            # 布局组件
+│   │   ├── shared/            # 共享组件
+│   │   └── ui/                # UI 组件库
+│   ├── config/                # 配置文件
+│   │   ├── infoConfig.ts      # 个人信息配置
+│   │   ├── projects.ts        # 项目配置
+│   │   └── siteConfig.ts      # 网站配置
+│   ├── content/               # 内容文件
+│   │   └── blog/              # 博客文章 (MDX)
+│   ├── lib/                   # 工具函数
+│   └── styles/                # 样式文件
+├── public/                    # 静态资源
+└── package.json
+```
 
-1. Create an account on [Vercel](https://vercel.com)
-2. Click the button below to deploy:
+## 🎨 技术栈
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SCLS-AI-Camp/MP1)
+### 核心框架
+- **Next.js 14** - React 框架，支持 App Router
+- **React 18** - UI 库
+- **TypeScript** - 类型安全
 
-3. Follow Vercel's instructions to complete the deployment
+### 样式
+- **Tailwind CSS** - 原子化 CSS 框架
+- **shadcn/ui** - 高质量 UI 组件
+- **Framer Motion** - 动画库
 
-## Features
-- 🎨 Beautifully designed UI using TailwindCSS, MagicUI, and Shadcn/UI
-- 📱 Responsive layout
-- 🌙 Light/Dark Mode
-- 📊 Github Calendar & Contribution Snake
-- 💻 Tech Icon Cloud
-- 🐦 Tweet Grid
-- 👥 Visitor Counter
-- 📝 Blog Section with MDX and Markdown support
-- 📰 RSS Feed
-- 📈 Web Analytics support (Google Analytics, OpenPanel Analytics, Plausible Analytics)
+### 3D 渲染
+- **Spline** - 3D 场景渲染
+- **@splinetool/react-spline** - React 集成
 
-## Tech Stack
-- Next.js
-- TailwindCSS
-- Shadcn/UI
-- MagicUI
-- Phosphor Icons
+### 内容管理
+- **MDX** - Markdown + JSX
+- **gray-matter** - Front matter 解析
+- **rehype-prism** - 代码高亮
 
-## Configuration Guide
-After getting your site running, you can customize it by modifying these files:
+### 其他
+- **next-themes** - 主题管理
+- **lucide-react** - 图标库
+- **react-icon-cloud** - 技术栈图标云
 
-### Configuration Files
-- `.env.local` - Environment variables
-- `src/config/siteConfig.ts` - Site configuration
-- `src/config/infoConfig.ts` - Personal information
-- `src/config/*.ts` - Section-specific configurations
-- `src/content/blog/**.mdx` - Blog content
-- `public/github-contribution-snake/*.svg` - GitHub contribution visualization
+## ⚙️ 配置
 
-## Need Help?
-- Watch the tutorial videos provided in the AI Camp course
-- Ask questions during class sessions
+### 个人信息配置
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+编辑 `src/config/infoConfig.ts` 文件：
+
+```typescript
+export const name = '你的名字'
+export const headline = '你的职位'
+export const introduction = '你的简介'
+export const email = 'your@email.com'
+export const githubUsername = 'your-github-username'
+
+export const aboutParagraphs = [
+  "第一段个人简介",
+  "第二段个人简介",
+  "第三段个人简介",
+]
+
+export const techIcons = [
+  'java', 'spring', 'mysql', 'redis', // 你的技术栈
+]
+```
+
+### 项目配置
+
+编辑 `src/config/projects.ts` 文件添加你的项目、工作经历、教育背景等。
+
+### 博客文章
+
+在 `src/content/blog/` 目录下创建 `.mdx` 文件：
+
+```mdx
+---
+title: "文章标题"
+date: "2025-01-19"
+description: "文章描述"
+---
+
+文章内容...
+```
+
+## 🎯 主要功能
+
+### 主页
+- 极简居中设计
+- 头像展示
+- 社交链接
+- 快速导航（关于、博客、项目）
+- 主题切换按钮
+
+### 3D 交互区域
+- Spline 3D 机器人展示
+- 个人简介文字
+- 支持主题自动切换
+
+### 关于页面
+- 个人简介与技术栈并排展示
+- 工作经历和教育背景
+- 获奖荣誉
+- 实习经历
+- 项目经验
+- 兴趣爱好
+
+### 博客系统
+- MDX 支持
+- 代码高亮
+- 响应式排版
+- 文章列表和详情页
+
+### 项目展示
+- 项目卡片展示
+- 技术标签
+- 项目链接
+
+## 🎨 自定义
+
+### 更换 3D 场景
+
+1. 在 [Spline](https://spline.design/) 创建你的 3D 场景
+2. 导出并获取场景 URL
+3. 编辑 `src/components/home/SplineSceneBasic.tsx`：
+
+```tsx
+<SplineScene 
+  scene="你的 Spline 场景 URL"
+  className="w-full h-full"
+/>
+```
+
+### 修改主题色
+
+编辑 `src/styles/tailwind.css` 中的 CSS 变量：
+
+```css
+:root {
+  --primary: 171 70% 40%;  /* 主题色 */
+  /* 其他颜色变量 */
+}
+```
+
+## 📝 部署
+
+### Vercel (推荐)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/1634594707/homepage)
+
+1. Fork 本仓库
+2. 在 Vercel 导入项目
+3. 自动部署完成
+
+### 其他平台
+
+支持部署到任何支持 Next.js 的平台：
+- Netlify
+- Railway
+- AWS Amplify
+- 自托管服务器
+
+## 📄 License
+
+MIT License - 详见 [LICENSE](LICENSE) 文件
+
+## 🙏 致谢
+
+- 设计灵感来自 [homepage-main](https://github.com/example/homepage-main)
+- UI 组件基于 [shadcn/ui](https://ui.shadcn.com/)
+- 3D 渲染使用 [Spline](https://spline.design/)
+
+## 📧 联系方式
+
+- Email: 1634594707@qq.com
+- GitHub: [@1634594707](https://github.com/1634594707)
 
 ---
 
-# SCLS AI Camp - Mini Project 1：个人作品集 <a name="readme-中文"></a>
-
-[English](README.md) | [简体中文](README.md#readme-中文)
-
-这是 SCLS AI Camp 的第一个迷你项目，基于 [Corey Chiu](https://coreychiu.com) 创建的优秀作品集模板。我们已经针对教育目的对其进行了调整，帮助学生学习网页开发、Git 工作流程和部署实践。
-
-## 原作者致谢
-本模板由 Corey Chiu 创建。查看他的作品：[coreychiu.com](https://coreychiu.com)
-
-## 快速开始
-
-### 前置要求
-- 基本的 Git 知识
-- 电脑上已安装 Node.js和pnpm
-- GitHub 账号
-
-### 开发步骤
-1. Fork 这个仓库到你的 GitHub 账号：
-   - 点击页面右上角的 "Fork" 按钮
-   - 选择你的 GitHub 账号作为目标
-
-2. 克隆你 fork 的仓库：
-```bash
-git clone git@github.com:你的用户名/MP1.git
-cd MP1
-```
-
-3. 安装依赖：
-```bash
-pnpm install
-```
-
-4. 创建并配置 `.env.local`：
-```bash
-cp .env.example .env.local
-```
-
-5. 启动开发服务器：
-```bash
-pnpm dev
-```
-
-6. 在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看你的作品集
-
-### 部署
-使用 [Vercel](https://vercel.com) 是部署你的作品集最简单的方式：
-
-1. 在 [Vercel](https://vercel.com) 创建账号
-2. 点击下面的按钮开始部署：
-
-[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SCLS-AI-Camp/MP1)
-
-3. 按照 Vercel 的说明完成部署
-
-## 功能特点
-- 🎨 使用 TailwindCSS、MagicUI 和 Shadcn/UI 设计的精美界面
-- 📱 响应式布局
-- 🌙 明暗主题模式
-- 📊 GitHub 贡献日历和贡献蛇形图
-- 💻 技术图标云
-- 🐦 推文展示
-- 👥 访客计数器
-- 📝 支持 MDX 和 Markdown 的博客部分
-- 📰 RSS 订阅
-- 📈 网站分析支持（Google Analytics、OpenPanel Analytics、Plausible Analytics）
-
-## 技术栈
-- Next.js
-- TailwindCSS
-- Shadcn/UI
-- MagicUI
-- Phosphor Icons
-
-## 配置指南
-在网站运行之后，你可以通过修改这些文件来自定义你的网站：
-
-### 配置文件
-- `.env.local` - 环境变量
-- `src/config/siteConfig.ts` - 网站配置
-- `src/config/infoConfig.ts` - 个人信息
-- `src/config/*.ts` - 各部分的具体配置
-- `src/content/blog/**.mdx` - 博客内容
-- `public/github-contribution-snake/*.svg` - GitHub 贡献可视化
-
-## 需要帮助？
-- 观看 AI Camp 课程提供的教学视频
-- 在课堂上提出问题
-
-## 许可证
-本项目基于 MIT 许可证 - 查看 LICENSE 文件了解详情
-# SCLS AI Camp - Mini Project 1: Personal Portfolio
-
-This is Mini Project 1 for SCLS AI Camp students, based on the excellent portfolio template originally created by [Corey Chiu](https://coreychiu.com). This template has been adapted for educational purposes to help students learn web development, Git workflows, and deployment practices.
-
-## Original Credit
-This template was created by Corey Chiu. Check out his work at [coreychiu.com](https://coreychiu.com)
-
-## Features
-- 🎨 Beautifully designed UI using TailwindCSS, MagicUI, and Shadcn/UI
-- 📱 Responsive layout
-- 🌙 Light/Dark Mode
-- 📊 Github Calendar & Contribution Snake
-- 💻 Tech Icon Cloud
-- 🐦 Tweet Grid
-- 👥 Visitor Counter
-- 📝 Blog Section with MDX and Markdown support
-- 📰 RSS Feed
-- 📈 Web Analytics support (Google Analytics, OpenPanel Analytics, Plausible Analytics)
-
-## Tech Stack
-- Next.js
-- TailwindCSS
-- Shadcn/UI
-- MagicUI
-- Phosphor Icons
-
-## Getting Started
-
-### Prerequisites
-- Basic understanding of Git
-- Node.js installed on your computer
-- GitHub account
-
-### Configuration Files
-- `.env.local` - Environment variables
-- `src/config/siteConfig.ts` - Site configuration
-- `src/config/infoConfig.ts` - Personal information
-- `src/config/*.ts` - Section-specific configurations
-- `src/content/blog/**.mdx` - Blog content
-- `public/github-contribution-snake/*.svg` - GitHub contribution visualization
-
-### Development
-1. Clone the repository:
-```bash
-git clone [your-forked-repo-url]
-
+⭐ 如果这个项目对你有帮助，欢迎 Star！
