@@ -1,6 +1,6 @@
-# 江皓铖的个人主页
+# 江皓铖的个人主页（简历版）
 
-> 一个现代化、极简优雅的个人主页，采用 Next.js 14 + TypeScript + Tailwind CSS 构建
+> 一个面向求职展示的个人主页，聚焦后端开发与 AI 工程实践，采用 Next.js 14 + TypeScript + Tailwind CSS 构建
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
@@ -42,7 +42,7 @@ pnpm install
 
 ```bash
 # 启动开发服务器
-npm run dev
+pnpm run dev
 
 # 访问 http://localhost:3000
 ```

@@ -4,24 +4,24 @@ export * from './career'
 
 // personal info
 export const name = '江皓铖'
-export const headline = '后端开发工程师 · 人工智能专业'
+export const headline = '后端开发（AI方向） · 2026届 · 杭州'
 export const introduction =
-  "对Java后端技术有浓厚兴趣，具备扎实的基础和持续学习的能力，逻辑清晰，注重代码质量与系统可维护性。具备良好的团队沟通与协作精神，渴望在实战项目中不断提升工程能力。"
+  "聚焦后端与 AI 工程实践，熟悉 RAG、Agent Loop、多模型接入与工程化落地。具备独立模块开发能力，重视代码质量、可维护性与系统可观测性，期待在真实业务场景中持续打磨工程能力。"
 export const email = '1634594707@qq.com'
 export const githubUsername = '1634594707'
 
 // about page
 export const aboutMeHeadline = '关于我'
 export const aboutParagraphs = [
-  "我是江皓铖，温州大学人工智能专业在读本科生，对Java后端开发充满热情。",
-  '在校期间积极参与项目开发，掌握了Spring Boot、MyBatis、MySQL、Redis等主流技术栈，并在实习中积累了实际项目经验。',
-  "我注重代码质量与系统可维护性，具备良好的学习能力和团队协作精神，期待在后端开发领域持续成长。",
+  "我是江皓铖，温州大学人工智能专业 2026 届本科生，求职方向为后端开发（AI 方向），期望城市杭州。",
+  '技术栈覆盖 FastAPI / Spring Boot / NestJS，具备 PostgreSQL（pgvector）/ Neo4j / Redis 的落地经验，能够独立完成模块设计、开发与优化。',
+  "在实习与项目中持续实践 RAG、SSE 流式推送、工具白名单、双库一致与缓存治理，注重稳定性、可追溯性和团队协作效率。",
 ]
 
 // blog
 export const blogHeadLine = "技术博客"
 export const blogIntro =
-  "分享我在后端开发、人工智能和技术学习中的思考与实践。"
+  "记录后端开发、AI 系统设计与工程实践中的思考。"
 
 // social links
 export type SocialLinkType = {
@@ -41,22 +41,20 @@ export const socialLinks: Array<SocialLinkType> = [
 
 // https://simpleicons.org/
 export const techIcons = [
+  'python',
   'java',
+  'typescript',
   'spring',
   'springboot',
-  'mysql',
+  'fastapi',
+  'nestjs',
   'redis',
   'postgresql',
   'neo4j',
+  'openai',
   'docker',
   'git',
   'github',
-  'rabbitmq',
-  'nginx',
   'linux',
-  'maven',
-  'intellijidea',
-  'postman',
   'jwt',
-  'mybatis',
 ]

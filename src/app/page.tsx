@@ -9,7 +9,7 @@ import { SplineSceneBasic } from '@/components/home/SplineSceneBasic'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
 
 export default async function Home() {
-  let blogList = (await getAllBlogs()).slice(0, 6)
+  let blogList = (await getAllBlogs()).slice(0, 3)
 
   return (
     <>

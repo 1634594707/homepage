@@ -68,6 +68,11 @@
   }
 }
 
+/* Blog reading font style (serif-like) */
+.blog-reading-font {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+}
+
 /* Loader animation for Spline component */
 .loader {
   width: 48px;

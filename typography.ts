@@ -69,6 +69,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
 
         // Base
         color: 'var(--tw-prose-body)',
+        fontFamily: 'inherit',
         lineHeight: theme('lineHeight.7'),
         '> *': {
           marginTop: theme('spacing.10'),

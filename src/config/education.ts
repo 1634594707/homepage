@@ -17,6 +17,6 @@ export type EducationItemType = {
       major: '人工智能 · 本科',
       logo: 'college',
       start: '2022',
-      end: '2026（在读）'
+      end: '2026'
     },
   ]

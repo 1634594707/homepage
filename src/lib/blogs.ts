@@ -6,9 +6,11 @@ import matter from 'gray-matter'
 export type BlogType = {
   title: string
   description: string
-  author: string
+  author?: string
   date: string
   slug: string
+  tags?: string[]
+  coverImage?: string
 }
 
 async function importBlog(

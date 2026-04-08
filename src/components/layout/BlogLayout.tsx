@@ -2,6 +2,7 @@
 
 import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { AppContext } from '@/app/providers'
 import { Container } from '@/components/layout/Container'
 import { Prose } from '@/components/shared/Prose'
@@ -21,7 +22,7 @@ export function BlogLayout({
 
   return (
     <Container className="mt-16 sm:mt-24">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         {/* Back Button */}
         {previousPathname && (
           <button
@@ -37,29 +38,55 @@ export function BlogLayout({
 
         {/* Article Header */}
         <article>
-          <header className="mb-12 text-center">
+          <header className="mb-10 text-center">
             <time
               dateTime={blog.date}
-              className="text-sm text-muted-foreground/60 font-mono mb-4 block"
+              className="text-xs text-muted-foreground/60 font-mono mb-4 block tracking-wide"
             >
               {formatDate(blog.date)}
             </time>
-            
-            <h1 className="text-3xl sm:text-4xl font-serif mb-4 leading-tight">
+
+            {blog.tags && blog.tags.length > 0 && (
+              <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                {blog.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-muted-foreground/20 px-2.5 py-0.5 text-[11px] text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <h1 className="blog-reading-font text-[30px] sm:text-[34px] font-medium mb-3 leading-tight tracking-tight">
               {blog.title}
             </h1>
 
             {blog.description && (
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              <p className="blog-reading-font text-sm text-muted-foreground/85 leading-7 max-w-xl mx-auto">
                 {blog.description}
               </p>
             )}
 
-            <div className="w-16 h-px bg-muted-foreground/20 mx-auto mt-8"></div>
+            {blog.coverImage && (
+              <div className="relative mt-8 overflow-hidden rounded-xl border border-muted-foreground/10">
+                <Image
+                  src={blog.coverImage}
+                  alt={blog.title}
+                  width={1200}
+                  height={630}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+
+            <div className="w-full h-px bg-muted-foreground/15 mt-8"></div>
           </header>
 
           {/* Article Content */}
-          <Prose className="prose-lg" data-mdx-content>
+          <Prose className="prose-zinc blog-reading-font dark:prose-invert" data-mdx-content>
             {children}
           </Prose>
 

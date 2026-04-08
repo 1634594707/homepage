@@ -9,11 +9,26 @@ import Link from 'next/link'
 import { Favicon } from "favicon-stealer";
 
 export function ProjectCard({ project, titleAs }: { project: ProjectItemType, titleAs?: keyof JSX.IntrinsicElements }) {
-  const utmLink = `https://${project.link.href}?utm_source=${utm_source}`
+  const isAbsoluteLink = /^https?:\/\//.test(project.link.href)
+  const baseLink = isAbsoluteLink ? project.link.href : `https://${project.link.href}`
+  const separator = baseLink.includes('?') ? '&' : '?'
+  const utmLink = `${baseLink}${separator}utm_source=${utm_source}`
   let Component = titleAs ?? 'h2'
   return (
     <li className='group relative flex flex-col items-start h-full'>
       <div className="relative flex flex-col h-full w-full rounded-2xl border border-muted-foreground/20 shadow-sm transition-all group-hover:scale-[1.02] group-hover:shadow-lg group-hover:border-muted-foreground/30 overflow-hidden bg-card">
+        {project.coverImage && (
+          <div className="relative h-44 w-full overflow-hidden">
+            <Image
+              src={project.coverImage}
+              alt={project.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        )}
+
         {/* Header Section */}
         <div className="px-6 py-5 border-b border-muted-foreground/10 bg-muted/30">
           <div className='flex items-start justify-between gap-3'>
